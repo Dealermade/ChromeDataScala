@@ -1,2 +1,2 @@
-# ChromeDataScala
+# ChromedScala
 ChromeData API Scala
