@@ -1,4 +1,4 @@
-package com.dealermade.chromed
+package com.dealermade.chromed.models
 
 case class Standard(id: Int,
                     description: String,
@@ -9,7 +9,7 @@ case class Standard(id: Int,
 object Standard {
   def apply(elem: xml.Node, stylesMap: Map[Int, Style]): Standard =
     Standard(
-      (elem \ "id").text.toInt,
+      (elem \ "header" \@ "id").toInt,
       (elem \ "description").text,
       (elem \ "categories")
         .map(CategoryAssociation(_)),
@@ -17,5 +17,5 @@ object Standard {
         .map(s => stylesMap(s.text.toInt)),
       (elem \ "installed")
         .headOption
-        .map(InstallationCause(_)))
+        .flatMap(InstallationCause(_)))
 }

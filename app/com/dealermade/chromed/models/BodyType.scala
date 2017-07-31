@@ -1,4 +1,4 @@
-package com.dealermade.chromed
+package com.dealermade.chromed.models
 
 case class BodyType(id: Int,
                     name: String,

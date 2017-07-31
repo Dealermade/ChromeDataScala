@@ -1,4 +1,4 @@
-package com.dealermade.chromed
+package com.dealermade.chromed.models
 
 case class Style(id: Int,
                  name: String,
