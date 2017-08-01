@@ -40,6 +40,9 @@ class ChromedClient @Inject()(ws: WSClient,
         Try(XML.loadString(r.body))
           .toOption
           .map(c => c \ "Body" \ "VehicleDescription")
+          .filter(n => (n \ "responseStatus")
+            .headOption
+            .exists(_.attributes.exists(_.value.text == "Successful")))
           .flatMap(_.headOption)
           .map(Vehicle(_))
       }
